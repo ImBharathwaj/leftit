@@ -1,17 +1,16 @@
-# app/schemas.py
+from pydantic import BaseModel
 
-from pydantic import BaseModel, EmailStr
 
-class UserBase(BaseModel):
-    username: str
-    email: EmailStr
-    full_name: str
+# Creating a schema for the post which is going to be passed into the API
+class PostBase(BaseModel):
+    title: str
+    content: str
+    published: bool = True
 
-class UserCreate(UserBase):
-    password: str
 
-class User(UserBase):
-    id: int
+class PostCreate(PostBase):
+    pass
 
-    class Config:
-        orm_mode = True
+
+class PostUpdate(PostCreate):
+    pass
